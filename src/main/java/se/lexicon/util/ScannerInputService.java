@@ -1,4 +1,4 @@
-package se.lexicon.services;
+package se.lexicon.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
