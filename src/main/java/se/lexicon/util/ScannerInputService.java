@@ -11,7 +11,7 @@ public class ScannerInputService implements UserInputService{
     public ScannerInputService() {
     }
     
-    private Scanner scanner;
+    Scanner scanner;
     @Autowired
     public ScannerInputService(Scanner scanner) {
         this.scanner = scanner;

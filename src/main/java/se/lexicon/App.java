@@ -11,6 +11,6 @@ public class App
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ComponentScanConfig.class);
         StudentManagement studentManagement = context.getBean(StudentManagement.class);
         
-        studentManagement.create();
+        studentManagement.save(studentManagement.create());
     }
 }

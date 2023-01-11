@@ -1,6 +1,6 @@
 package se.lexicon.data_access;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import se.lexicon.data_access.sequencer.StudentIdSequencer;
 import se.lexicon.exceptions.DataNotFoundException;
 import se.lexicon.models.Student;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Repository
 public class StudentDaoListImpl implements StudentDao{
     
     private List<Student> students = new ArrayList<>();

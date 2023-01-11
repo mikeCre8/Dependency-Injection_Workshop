@@ -21,20 +21,4 @@ public class ComponentScanConfig {
         return new Scanner(System.in);
     }
     
-    /*
-    @Bean
-    public StudentDao studentDao() {
-        return new StudentDaoListImpl();
-    }
-    
-    @Bean
-    UserInputService userInputService() {
-        return new ScannerInputService();
-    }
-    
-    @Bean
-    StudentManagement studentManagement() {
-        return new StudentManagementConsoleImpl();
-    }*/
-    
 }
