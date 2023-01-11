@@ -4,10 +4,8 @@ import org.springframework.stereotype.Repository;
 import se.lexicon.data_access.sequencer.StudentIdSequencer;
 import se.lexicon.exceptions.DataNotFoundException;
 import se.lexicon.models.Student;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class StudentDaoListImpl implements StudentDao{
@@ -17,18 +15,22 @@ public class StudentDaoListImpl implements StudentDao{
     @Override
     public Student save( Student student ) {
         if(student == null) throw new IllegalArgumentException("student was null");
-        Integer studentId = StudentIdSequencer.nextId();
+        int studentId = StudentIdSequencer.nextId();
         student.setId(studentId);
         students.add(student);
         return student;
     }
     
     @Override
-    public Optional<Student> find( Integer id ) {
-        if(id == null) throw new IllegalArgumentException("Student id was null");
-        return students.stream()
-                .filter(student -> student.getId().equals(id))
-                .findFirst();
+    public Student find( int id ) throws DataNotFoundException {
+        if(id == 0) throw new IllegalArgumentException("Student id not valid");
+        Student student = null;
+        for (Student student1 : students){
+            if(student1.getId() == id)
+                student = student1;
+        }
+        if(student == null) throw new DataNotFoundException("no data found");
+        return student;
     }
     
     @Override
@@ -37,10 +39,7 @@ public class StudentDaoListImpl implements StudentDao{
     }
     
     @Override
-    public void delete( Integer id ) throws DataNotFoundException {
-        Optional<Student> optionalStudent = find(id);
-        if(!optionalStudent.isPresent()) throw new DataNotFoundException("data not found");
-        else students.remove(optionalStudent.get());
-    
+    public void delete( int id ) throws DataNotFoundException {
+        students.remove(find(id));
     }
 }

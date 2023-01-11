@@ -2,9 +2,9 @@ package se.lexicon.data_access.sequencer;
 
 public class StudentIdSequencer {
     
-    private static Integer sequencer = 0;
+    private static int sequencer = 0;
     
-    public static Integer nextId() {
+    public static int nextId() {
         return ++sequencer;
     }
     

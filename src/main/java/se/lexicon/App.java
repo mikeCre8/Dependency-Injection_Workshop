@@ -12,5 +12,11 @@ public class App
         StudentManagement studentManagement = context.getBean(StudentManagement.class);
         
         studentManagement.save(studentManagement.create());
+        try {
+            System.out.println(studentManagement.find(1));
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

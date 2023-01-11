@@ -7,10 +7,7 @@ import se.lexicon.data_access.StudentDao;
 import se.lexicon.exceptions.DataNotFoundException;
 import se.lexicon.models.Student;
 import se.lexicon.util.UserInputService;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class StudentManagementConsoleImpl implements StudentManagement{
@@ -39,14 +36,15 @@ public class StudentManagementConsoleImpl implements StudentManagement{
     }
     
     @Override
-    public Optional<Student> find( Integer id ) {
-        if(id == null) throw new IllegalArgumentException("Student id was null");
-        return studentDao.find(scannerService.getId());
+    public Student find( int id ) throws DataNotFoundException {
+        studentDao.find(scannerService.getId());
+        return studentDao.find(id);
     }
     
     @Override
-    public Student remove( Integer id ) throws DataNotFoundException {
+    public Student remove( int id ) throws DataNotFoundException {
         studentDao.delete(scannerService.getId());
+        System.out.println("Student removed!");
         return null;
     }
     
@@ -56,9 +54,10 @@ public class StudentManagementConsoleImpl implements StudentManagement{
     }
     
     @Override
-    public Student edit( Student student ) {
+    public Student edit( Student student ) throws DataNotFoundException {
         if(student == null) throw new IllegalArgumentException("student was null");
-        // todo
+        studentDao.find(scannerService.getId());
+        
         return student;
     }
 }
