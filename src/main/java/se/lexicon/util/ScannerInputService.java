@@ -8,19 +8,24 @@ import java.util.Scanner;
 @Service
 public class ScannerInputService implements UserInputService{
     
-    @Autowired
-    private Scanner scanner;
-    @Autowired
     public ScannerInputService() {
     }
     
-    @Override
-    public String getString() {
-        return scanner.nextLine();
+    private Scanner scanner;
+    @Autowired
+    public ScannerInputService(Scanner scanner) {
+        this.scanner = scanner;
     }
     
-    @Override
-    public Integer getId() {
+        @Override
+        public String getString() {
+            System.out.print("Enter student name: ");
+        return scanner.nextLine();
+    }
+        
+        @Override
+        public Integer getId() {
+            System.out.print("Enter student ID: ");
         return scanner.nextInt();
     }
 }

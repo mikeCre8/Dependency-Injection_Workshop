@@ -8,7 +8,6 @@ import se.lexicon.models.Student;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Component
 public class StudentDaoListImpl implements StudentDao{
@@ -17,8 +16,8 @@ public class StudentDaoListImpl implements StudentDao{
     
     @Override
     public Student save( Student student ) {
-        if(student == null) throw new IllegalArgumentException("customer was null");
-        int studentId = StudentIdSequencer.nextId();
+        if(student == null) throw new IllegalArgumentException("student was null");
+        Integer studentId = StudentIdSequencer.nextId();
         student.setId(studentId);
         students.add(student);
         return student;
