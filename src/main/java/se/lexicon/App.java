@@ -2,6 +2,7 @@ package se.lexicon;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import se.lexicon.config.ComponentScanConfig;
+import se.lexicon.models.Student;
 import se.lexicon.service.StudentManagement;
 
 public class App
@@ -11,12 +12,14 @@ public class App
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ComponentScanConfig.class);
         StudentManagement studentManagement = context.getBean(StudentManagement.class);
         
-        studentManagement.save(studentManagement.create());
+        Student student = studentManagement.save(studentManagement.create()); //  David
+        // 1 , David
         try {
-            System.out.println(studentManagement.find(1));
+            System.out.println(studentManagement.edit(studentManagement.editScanner()));
         }catch(Exception e){
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
+        System.out.println(studentManagement.findAll());
     }
 }

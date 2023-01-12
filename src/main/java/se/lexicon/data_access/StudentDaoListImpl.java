@@ -4,23 +4,36 @@ import org.springframework.stereotype.Repository;
 import se.lexicon.data_access.sequencer.StudentIdSequencer;
 import se.lexicon.exceptions.DataNotFoundException;
 import se.lexicon.models.Student;
+
+import javax.xml.ws.Service;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class StudentDaoListImpl implements StudentDao{
     
-    private List<Student> students = new ArrayList<>();
+    private List<Student> students = new ArrayList<>(); // [(1 - Marius) , (2 - Marius), (3, Marius) ]
     
     @Override
-    public Student save( Student student ) {
+    public Student save( Student student ) { // (4 - Marius)
         if(student == null) throw new IllegalArgumentException("student was null");
-        int studentId = StudentIdSequencer.nextId();
-        student.setId(studentId);
-        students.add(student);
+        
+        if(student.getId() == 0) {
+            int studentId = StudentIdSequencer.nextId();
+            student.setId(studentId);
+            students.add(student);
+        } else {
+            students.forEach(element -> {
+                if(element.getId() == student.getId()){
+                    element.setName(student.getName());
+                }
+            }
+            );
+            
+        }
         return student;
     }
-    
+        
     @Override
     public Student find( int id ) throws DataNotFoundException {
         if(id == 0) throw new IllegalArgumentException("Student id not valid");

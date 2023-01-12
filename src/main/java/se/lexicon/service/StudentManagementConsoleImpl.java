@@ -7,10 +7,11 @@ import se.lexicon.data_access.StudentDao;
 import se.lexicon.exceptions.DataNotFoundException;
 import se.lexicon.models.Student;
 import se.lexicon.util.UserInputService;
+
 import java.util.List;
 
 @Service
-public class StudentManagementConsoleImpl implements StudentManagement{
+public class StudentManagementConsoleImpl implements StudentManagement {
     
     UserInputService scannerService;
     StudentDao studentDao;
@@ -23,27 +24,39 @@ public class StudentManagementConsoleImpl implements StudentManagement{
     
     @Override
     public Student create() {
+        System.out.println("CREATE - Enter name");
         return new Student(scannerService.getString());
+    }
+    
+    @Override
+    public Student editScanner() {
+        System.out.println("CREATE - Enter Id");
+        int id = scannerService.getInt();
+        System.out.println("CREATE - Enter name");
+        String name = scannerService.getString();
+        return new Student(id, name);
     }
     
     @Override
     public Student save( Student student ) {
         if(student == null) throw new IllegalArgumentException("student was null");
         studentDao.save(student);
-        System.out.println(ConsoleColors.GREEN + "Student " + student.getName()+" with ID "+student.getId() + " stored!");
+        System.out.println(ConsoleColors.GREEN + "Student " + student.getName() + " with ID " + student.getId() + " stored!");
         System.out.println(ConsoleColors.RESET);
         return student;
     }
     
     @Override
     public Student find( int id ) throws DataNotFoundException {
-        studentDao.find(scannerService.getId());
+        System.out.println("FIND - Enter ID");
+        studentDao.find(scannerService.getInt());
         return studentDao.find(id);
     }
     
     @Override
     public Student remove( int id ) throws DataNotFoundException {
-        studentDao.delete(scannerService.getId());
+        System.out.println("REMOVE - Enter ID");
+        studentDao.delete(scannerService.getInt());
         System.out.println("Student removed!");
         return null;
     }
@@ -54,9 +67,14 @@ public class StudentManagementConsoleImpl implements StudentManagement{
     }
     
     @Override
-    public Student edit( Student student ) throws DataNotFoundException {
+    public Student edit( Student student ) throws DataNotFoundException { // 10, TEST
         if(student == null) throw new IllegalArgumentException("student was null");
-        studentDao.find(scannerService.getId());
+        if(student.getId() == 0) throw new IllegalArgumentException("student id should not be zero or empty");
+       Student result =  find(student.getId());
+       if(result == null) throw new DataNotFoundException("student id does not exist");
+       studentDao.save(student);
+            
+       System.out.println("Student information updated!");
         
         return student;
     }

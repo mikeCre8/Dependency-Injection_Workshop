@@ -19,13 +19,13 @@ public class ScannerInputService implements UserInputService{
     
         @Override
         public String getString() {
-            System.out.print("Enter student name: ");
+            System.out.print("Input: ");
         return scanner.nextLine();
     }
         
         @Override
-        public Integer getId() {
-            System.out.print("Enter student ID: ");
-        return scanner.nextInt();
+        public int getInt() {
+            System.out.print("Input: ");
+        return Integer.parseInt(scanner.nextLine());
     }
 }

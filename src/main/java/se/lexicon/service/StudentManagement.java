@@ -8,6 +8,9 @@ public interface StudentManagement {
     
     Student create();
     
+    Student editScanner();
+    
+    
     Student save(Student student);
     
     Student find(int id) throws DataNotFoundException;
