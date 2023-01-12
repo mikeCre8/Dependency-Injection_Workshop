@@ -67,7 +67,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
     }
     
     @Override
-    public Student edit( Student student ) throws DataNotFoundException { // 10, TEST
+    public Student edit( Student student ) throws DataNotFoundException {
         if(student == null) throw new IllegalArgumentException("student was null");
         if(student.getId() == 0) throw new IllegalArgumentException("student id should not be zero or empty");
        Student result =  find(student.getId());
