@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Student {
     
-    private int id; // 0
+    private int id;
     private String name;
     
     public Student() {

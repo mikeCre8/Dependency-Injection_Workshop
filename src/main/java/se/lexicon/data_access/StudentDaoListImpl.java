@@ -12,10 +12,10 @@ import java.util.List;
 @Repository
 public class StudentDaoListImpl implements StudentDao{
     
-    private List<Student> students = new ArrayList<>(); // [(1 - Marius) , (2 - Marius), (3, Marius) ]
+    private List<Student> students = new ArrayList<>();
     
     @Override
-    public Student save( Student student ) { // (4 - Marius)
+    public Student save( Student student ) {
         if(student == null) throw new IllegalArgumentException("student was null");
         
         if(student.getId() == 0) {
