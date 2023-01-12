@@ -12,8 +12,8 @@ public class App
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ComponentScanConfig.class);
         StudentManagement studentManagement = context.getBean(StudentManagement.class);
         
-        Student student = studentManagement.save(studentManagement.create()); //  David
-        // 1 , David
+        Student student = studentManagement.save(studentManagement.create());
+        
         try {
             System.out.println(studentManagement.edit(studentManagement.editScanner()));
         }catch(Exception e){

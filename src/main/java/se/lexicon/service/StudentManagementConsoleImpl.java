@@ -30,9 +30,9 @@ public class StudentManagementConsoleImpl implements StudentManagement {
     
     @Override
     public Student editScanner() {
-        System.out.println("CREATE - Enter Id");
+        System.out.println("EDIT - Enter Id");
         int id = scannerService.getInt();
-        System.out.println("CREATE - Enter name");
+        System.out.println("EDIT - Enter name");
         String name = scannerService.getString();
         return new Student(id, name);
     }
