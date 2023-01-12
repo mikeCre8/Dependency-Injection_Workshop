@@ -30,6 +30,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
     
     @Override
     public Student editScanner() {
+        System.out.println("Available students: " + findAll());
         System.out.println("EDIT - Enter Id");
         int id = scannerService.getInt();
         System.out.println("EDIT - Enter name");
@@ -73,9 +74,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
        Student result =  find(student.getId());
        if(result == null) throw new DataNotFoundException("student id does not exist");
        studentDao.save(student);
-            
-       System.out.println("Student information updated!");
-        
+       
         return student;
     }
 }
