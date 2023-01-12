@@ -5,7 +5,6 @@ import se.lexicon.data_access.sequencer.StudentIdSequencer;
 import se.lexicon.exceptions.DataNotFoundException;
 import se.lexicon.models.Student;
 
-import javax.xml.ws.Service;
 import java.util.ArrayList;
 import java.util.List;
 
