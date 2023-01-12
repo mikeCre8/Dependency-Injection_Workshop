@@ -4,7 +4,6 @@ import org.springframework.stereotype.Repository;
 import se.lexicon.data_access.sequencer.StudentIdSequencer;
 import se.lexicon.exceptions.DataNotFoundException;
 import se.lexicon.models.Student;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -7,7 +7,6 @@ import se.lexicon.data_access.StudentDao;
 import se.lexicon.exceptions.DataNotFoundException;
 import se.lexicon.models.Student;
 import se.lexicon.util.UserInputService;
-
 import java.util.List;
 
 @Service
